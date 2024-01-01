@@ -6,7 +6,7 @@ export const Home = () => {
    
     <ImageBackground style={styles.backgroundImage} source={require('../../assets/mountain.jpg')}>      
     <View>
-        <Text style={{color:'white'}}>{'This is Home Screen'}</Text>
+        <Text style={{color:'white',textAlign:'center'}}>{'This is Home Screen'}</Text>
     </View>
     </ImageBackground>
 
@@ -15,8 +15,15 @@ export const Home = () => {
 
 const styles = StyleSheet.create({
     backgroundImage:{
-        flex:1
+      
+        flex:1,
+        justifyContent:'center',
+       
     }
 })
+
+
+
+
 
 

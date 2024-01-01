@@ -1,29 +1,39 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  KeyboardAvoidingView,
+} from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import {useNavigation} from '@react-navigation/native';
 import BackButton from '../components/BackButton';
 import Button from '../components/Button';
+// import firebase from '../../firebase'
+
 
 export const Signup = ({navigation}) => {
+  // const createUser = () => {
+  //   firebase.auth().createUserWithEmailAndPassword(email, password)
+  //     .then(() => {
+        
+  //     })
+  //     .catch(error => {
+  //       console.error('Error creating user:', error.message);
+      
+  //     });
+  // };
   const [email, setEmail] = useState('');
 
-  const handleEmailChange = inputEmail => {
-    setEmail(inputEmail);
-  };
-
   const [username, setUsername] = useState('');
-  const handleUsernameChange = inputUsername => {
-    setUsername(inputUsername);
-  };
 
   const [password, setPassword] = useState('');
-  const handlePasswordChange = inputPassword => {
-    setPassword(inputPassword);
-  };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView style={styles.container}>
       <Image
         source={require('../../assets/bg3.png')}
         style={{position: 'absolute', marginTop: 70, width: '100%'}}
@@ -43,7 +53,7 @@ export const Signup = ({navigation}) => {
           style={styles.input}
           placeholder="Enter Email ID"
           placeholderTextColor="#6B6B6B"
-          onChangeText={handleEmailChange}
+          onChangeText={text => setEmail(text)}
           value={email}
         />
         <View
@@ -58,7 +68,7 @@ export const Signup = ({navigation}) => {
           style={styles.input}
           placeholder="Create Username"
           placeholderTextColor="#6B6B6B"
-          onChangeText={handleUsernameChange}
+          onChangeText={text => setUsername(text)}
           value={username}
         />
         <View
@@ -73,8 +83,9 @@ export const Signup = ({navigation}) => {
           style={styles.input}
           placeholder="Create Password"
           placeholderTextColor="#6B6B6B"
-          onChangeText={handlePasswordChange}
+          onChangeText={text => setPassword(text)}
           value={password}
+          secureTextEntry
         />
         <View
           style={{
@@ -87,13 +98,13 @@ export const Signup = ({navigation}) => {
 
       <View style={styles.buttonContainer}>
         <Button
-          onPress={() => navigation.navigate('login')}
+          onPress={()=>{}}
           title="Sign Up "
           height={60}
-          width={250}
+          width={'90%'}
           color={'black'}></Button>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -130,6 +141,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 30,
-    marginHorizontal: 50, 
-  }
+    marginHorizontal: 50,
+  },
 });

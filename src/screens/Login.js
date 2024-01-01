@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
+
 import {
   View,
   Text,
   StyleSheet,
   Image,
   TextInput,
-  KeyboardAwareScrollView,
   TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
@@ -16,14 +16,9 @@ import Button from '../components/Button';
 
 export const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
-  const handleUsernameChange = inputUsername => {
-    setUsername(inputUsername);
-  };
 
   const [password, setPassword] = useState('');
-  const handlePasswordChange = inputPassword => {
-    setPassword(inputPassword);
-  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -44,7 +39,7 @@ export const Login = ({navigation}) => {
           style={styles.input}
           placeholder="Username"
           placeholderTextColor="#6B6B6B"
-          onChangeText={handleUsernameChange}
+          onChangeText={text => setUsername(text)}
           value={username}
         />
         <View
@@ -55,7 +50,7 @@ export const Login = ({navigation}) => {
         style={styles.input}
         placeholder="Password"
         placeholderTextColor="#6B6B6B"
-        onChangeText={handlePasswordChange}
+        onChangeText={text => setPassword(text)}
         value={password}
         secureTextEntry={true}
       />
@@ -67,7 +62,7 @@ export const Login = ({navigation}) => {
           onPress={() => navigation.navigate('home')}
           title="LOGIN "
           height={60}
-          width={250}
+          width={'90%'}
           color={'black'}></Button>
       </View>
 
